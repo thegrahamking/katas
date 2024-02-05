@@ -10,20 +10,6 @@ public class Isograms
     /// </summary>
     public static bool IsIsogram(string str)
     {
-        if (string.IsNullOrEmpty(str))
-        {
-            return true;
-        }
-
-        var letters = new HashSet<string>(StringComparer.InvariantCultureIgnoreCase);
-        foreach (var letter in str)
-        {
-            if (!letters.Add(letter.ToString()))
-            {
-                return false;
-            }
-        }
-
-        return true;
+        return str.Length == new HashSet<char>(str.ToLowerInvariant().ToCharArray()).Count;
     }
 }
