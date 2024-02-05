@@ -9,9 +9,7 @@ namespace Katas;
 /// </summary>
 public class TakeATenMinuteWalk
 {
-    private static Dictionary<string, int> latitudes = new() { { "e", 1 }, { "w", -1 } };
-
-    private static Dictionary<string, int> longitudes = new() { { "n", 1 }, { "s", -1 } };
+    private static Dictionary<string, int> lookup = new() { { "e", 1 }, { "w", -1 }, { "n", 10 }, { "s", -10 } };
 
     public static bool IsValidWalk(string[] walk)
     {
@@ -20,23 +18,15 @@ public class TakeATenMinuteWalk
             return false;
         }
 
-        var latitude = 0;
-        var longitude = 0;
+        var coordinates = 0;
         foreach (var direction in walk)
         {
-            if (latitudes.TryGetValue(direction, out var latitudeMovementSize))
+            if (lookup.TryGetValue(direction, out var movement))
             {
-                latitude += latitudeMovementSize;
-                continue;
-            }
-
-            if (longitudes.TryGetValue(direction, out var longitudeMovementSize))
-            {
-                longitude += longitudeMovementSize;
-                continue;
+                coordinates += movement;
             }
         }
 
-        return latitude == 0 && longitude == 0;
+        return coordinates == 0;
     }
 }
