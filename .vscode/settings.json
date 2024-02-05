@@ -1,3 +1,7 @@
 {
-    "dotnet.defaultSolution": "Katas.sln"
+    "dotnet.defaultSolution": "Katas.sln",
+    "cSpell.words": [
+        "Codewars",
+        "Katas"
+    ]
 }
